@@ -91,6 +91,12 @@ const Register = () => {
         </div>
 
 
+        <span
+          onClick={() => router.push('/auth/login')}
+          className="text-xs text-gray-500 font-light underline hover:text-blue-500 cursor-pointer"
+        >Aleady have an account? login
+        </span>
+
         {/* Login Button */}
         <input
           type="submit"

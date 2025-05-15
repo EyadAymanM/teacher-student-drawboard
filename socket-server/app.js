@@ -14,19 +14,24 @@ const io = new Server(server, {
 });
 
 io.on('connection', socket => {
-  console.log(`user ${socket.id.slice(0, 6)} connected`)
+  // console.log(`user ${socket.id.slice(0, 6)} connected`)
   // handleSocket(socket,io)
-  socket.on('draw:start', (coords) => {
+
+  socket.on('join-board', (boardId) => {
+    socket.join(boardId);
+  });
+
+  socket.on('draw:start', (coords,boardId, settings) => {
     // console.log(coords);
-    io.emit('draw:start', coords)
+    io.to(boardId).emit('draw:start', coords, settings)
   })
 
-  socket.on('draw:stop', (state) => {
-    io.emit('draw:stop', state)
+  socket.on('draw:stop', (state,boardId, settings) => {
+    io.to(boardId).emit('draw:stop', state, settings)
   })
 
-  socket.on('drawing', (coords) => {
-    io.emit('drawing', coords)
+  socket.on('drawing', (coords,boardId, settings) => {
+    io.to(boardId).emit('drawing', coords, settings)
   })
 
 });

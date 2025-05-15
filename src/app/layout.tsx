@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SocketProvider } from "@/Providers/SocketProvider";
 import { SessionProvider } from 'next-auth/react';
-import Nav from "@/components/Nav";
+// import Nav from "@/components/Nav";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <SessionProvider>
           <SocketProvider>
-            <Nav />
+            {/* <Nav /> */}
             {children}
           </SocketProvider>
         </SessionProvider>
