@@ -54,9 +54,11 @@ export default function Draw() {
       ctx.stroke();
     });
     
-    // return () => {
-    //   socket?.off()
-    // };
+    return () => {
+      socket?.off('draw:start');
+      socket?.off('draw:stop');
+      socket?.off('drawing');
+    };
   }, [socket]);
 
   return (
